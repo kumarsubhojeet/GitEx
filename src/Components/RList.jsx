@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import {ListGroup, ListGroupItem} from "reactstrap";
-
+import Navbar from '../Components/Navbar';
 
 export const RList = ({ repos_url }) => {
  
@@ -26,6 +26,7 @@ export const RList = ({ repos_url }) => {
 
     return (
         <>
+      
         <div className="RList_main">
             <div className="container">
             <ListGroup className="mb-10">

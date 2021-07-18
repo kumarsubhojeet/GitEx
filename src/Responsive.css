@@ -64,4 +64,15 @@
     .disp{
       display: grid;
     }
+
+
+
+    .location{
+      margin-left: 10px;
+    }
+
+
+   .avatar_url{
+     width: 100%;
+   }
   }

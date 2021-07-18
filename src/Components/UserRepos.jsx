@@ -4,6 +4,7 @@ import axios from "axios"
 
 import RList from '../Components/RList';
 import Profile from "../Components/Profile"
+import Navbar from '../Components/Navbar';
 
 import {NavLink} from 'react-router-dom'
 import Footer from "../Components/Footer"
@@ -27,6 +28,7 @@ const UserRepos = () => {
 
   return (
     <>
+     <Navbar />
       <div className="container">
         <div className="input-group mb-3 input_bar">
           <input
@@ -48,9 +50,10 @@ const UserRepos = () => {
         <RList repos_url={details.repos_url} />
         </div>
 
-        {/* <Footer /> */}
+      
     
       </div>
+      <Footer/>
     </>
   );
 };

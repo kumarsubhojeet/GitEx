@@ -6,19 +6,23 @@ import commis from "../img/cimmits.svg"
 import location from "../img/location.svg"
 import date from "../img/date.svg"
 import cont from "../img/contributer.svg"
-
+import Navbar from '../Components/Navbar';
 import Footet from "../Components/Footer"
 
 const landingPage = () => {
     return (
         <>
+        <Navbar />
             <div className="landingmain">
      
-
+     
             <div className="photo">
-                   <img src={cell} className="Find" alt="" />
+                   <img src={cell} className="Find" alt="Error" />
                 </div>
             </div>
+            <div className="abour">
+     
+     </div>
             <h1 className="Features_Landing_page">Features</h1>
             <div className="Links_Landing">
             
@@ -27,7 +31,7 @@ const landingPage = () => {
             
                 
                 <li className="landing_items">
-                <NavLink exact className="landing_links" to="/login">
+                <NavLink exact className="landing_links" to="/userRepos">
                   <img src={user} className="link_img" alt="" />
                   Serach By UserName <span className="sr-only">(current)</span>
                 </NavLink>
@@ -35,9 +39,9 @@ const landingPage = () => {
          
 
               <li className="landing_items">
-                <NavLink exact className="landing_links"  to="/about">
+                <NavLink exact className="landing_links"  to="/ByLang">
                 <img src={commis} className="link_img" alt="" />
-                  Search By Commits
+                  Search By Language
                 </NavLink>
               </li>
               <li className="landing_items">

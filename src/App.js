@@ -9,12 +9,13 @@ import Home from './Components/Home';
 import UserRepos from './Components/UserRepos';
 import Profile from './Components/Profile';
 import landingPage from './SearchBy/landingPage';
-
+import ByLang from './SearchBy/ByLanguage'
+import RList from './Components/RList'
 
 const App = () => {
   return (
     <>
-    <Navbar />
+    
     <Switch>
       <Route exact path='/' component={landingPage} />
       <Route exact path='/Home' component={Home} />
@@ -22,7 +23,8 @@ const App = () => {
       <Route exact path='/signup' component={Signup}  />
       <Route exact path='/about' component={About}  />
       <Route exact path='/userRepos' component={UserRepos}  />
-      {/* <Route exact path='/Profile' component={Profile}  /> */}
+      <Route exact path='/ByLang' component={ByLang}  />
+      <Route exact path='/RList' component={RList}  />
     </Switch>
     </>
   )

@@ -2,13 +2,17 @@ import React from 'react';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { NavLink } from "react-router-dom";
+import Navbar from '../Components/Navbar';
+
 
 
 
 const Profile = (props) => {
   const { details } = props;
   return (
+      
     <>
+  
     <div className="container">
 
        <div className="main">
