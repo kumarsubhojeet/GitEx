@@ -1,0 +1,34 @@
+.Contact_main{
+      width: 100%;
+      margin: 50px auto;
+      text-align: center;
+      height:auto;
+}
+.inputs_item{
+      width: 60%;
+      text-align: center;
+      margin: 0px auto;
+      border-radius: 19px 19px 19px 19px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+
+
+@media only screen and (max-width: 790px) {
+      .Contact_main{
+            width: 100%;
+            margin: 10px auto;
+            text-align: center;
+            height:auto;
+      
+      }
+      .inputs_item{
+            width: 80%;
+            text-align: center;
+            margin: 0px auto;
+            border-radius: 19px 19px 19px 19px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+      }
+      
+      
+}

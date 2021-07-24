@@ -6,6 +6,7 @@
 @media screen and (max-width: 786px) {
     .nav_Head{
         height: auto;
+        border: 1px solid red;
       }
       .Profile_img{
        display: none;
@@ -21,16 +22,16 @@
           border-radius: 0 20px 20px 0;
       }
       .logo{
-        height: 90px;
+        height: auto;
         width: 90px;
         background-size: cover;
         margin-top: 0px;
         margin-left: 0px;
       }
       .nav_Head{
-        height: auto;
-        background-image: url("./img//Pink\ and\ Violet\ Simple\ Hot\ Neons\ Gradients\ Creative\ Presentation.png");
-        background-size: auto;
+        height: 5rem;
+        background-size: cover;
+        background: transparent;
       }
       .navlinks{
         font-size: 20px;
@@ -60,9 +61,17 @@
     }
     .first{
       display: grid;
+      width: 100%;
+    }
+    .secound{
+      width: 100%;
     }
     .disp{
       display: grid;
+    }
+    .Blog{
+      overflow: hidden;
+      word-wrap: break-word;
     }
 
 
@@ -75,4 +84,12 @@
    .avatar_url{
      width: 100%;
    }
+   .userRepo_inputBar{
+    margin: 2rem auto;
+    width: 80%;
+    text-align: center;
+  }
+  .user_Repo{
+    display: block;
+  }
   }

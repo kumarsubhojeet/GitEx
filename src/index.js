@@ -7,7 +7,13 @@ import "./Css/Footer.css"
 import "./Css/Landing.css"
 import App from './App';
 import 'antd/dist/antd.css';
+import "./bootstrap.min.css"
+import "./Css/Contact.css"
+import './Css/Home.css'
+
 import { BrowserRouter } from "react-router-dom";
+
+import "./Css/Login.css"
 
 
 ReactDOM.render(

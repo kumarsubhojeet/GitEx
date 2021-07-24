@@ -1,79 +1,157 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import cell from "../New_img/cell.svg";
 import { NavLink } from "react-router-dom";
-import user from "../img/user.svg"
-import cell from "../img/cell.svg"
-import commis from "../img/cimmits.svg"
-import location from "../img/location.svg"
-import date from "../img/date.svg"
-import cont from "../img/contributer.svg"
-import Navbar from '../Components/Navbar';
-import Footet from "../Components/Footer"
+import {auth} from "../Firebase"
 
-const landingPage = () => {
-    return (
-        <>
-        <Navbar />
-            <div className="landingmain">
-     
-     
-            <div className="photo">
-                   <img src={cell} className="Find" alt="Error" />
-                </div>
-            </div>
-            <div className="abour">
-     
-     </div>
-            <h1 className="Features_Landing_page">Features</h1>
-            <div className="Links_Landing">
-            
-                <div className="link_box">
-               
-            
-                
-                <li className="landing_items">
-                <NavLink exact className="landing_links" to="/userRepos">
-                  <img src={user} className="link_img" alt="" />
-                  Serach By UserName <span className="sr-only">(current)</span>
-                </NavLink>
-              </li>
+import userr from "../img/user.svg";
+import commis from "../img/cimmits.svg";
+import location from "../img/location.svg";
+import date from "../img/date.svg";
+import cont from "../img/contributer.svg";
+
+import Contact from "../Components/Contact"
+import Footer from "../Components/Footer"
+import { BackTop } from 'antd';
+import Typical from 'react-typical'
+import PleaseLogin from '../Components/PleaseLogin'
+import About from "../Components/About"
+
+
+const LandingPage = () => {
+
+  const [user,setuser] = useState(null)
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if(user) setuser(user)
+      else setuser(null)
+    })
+  }, [])
+
+  const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: 40,
+    backgroundColor: ' #2e4053 ',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 14,
+    duration: 1300
+  };
+ 
+
+  return (
+    <>
+      <div className="landing_main">
+        <div className="heading">
+          <h1>GitExtractor</h1>
+
+          <h3>Search</h3>
+          <Typical
+        steps={['New Peoples 👨‍🎓', 4000, 'New Repositories💾', 4000, "Hire Individuals 👩‍🏫" , 4000]}
+        loop={Infinity}
+        wrapper="p"
+      />
+    
+
+
+        </div>
+
+        <div className="picture_landing">
+          <img src={cell} className="cell_landingpg" alt="Error" />
+        </div>
+
+        <div className="heading2">
+          <h1>GitExtractor</h1>
+          <h3>Search</h3>
+          <Typical
+        steps={['New Peoples 👨‍🎓', 4000, 'New Repositories💾', 4000, "Hire Individuals 👩‍🏫" , 4000]}
+        loop={Infinity}
+        wrapper="p"
+      />
+
+
+
+        </div>
+      </div>
+
+   <About />
+
+     <div className="Features">
+      <h4>Features</h4>
+      <i class="fas fa-search faas"></i>
+      </div>          
+
+
+
+
+{
+         user?
+         <>
+         <div data-aos="zoom-in" className="tec_aoc">
+<li className="landing_items">
+              <NavLink exact className="landing_links" to="/userRepos">
+                <img src={userr} className="link_img" alt="" />
+                <br />
+               <h5 className="landing_items_h5"> Serach By UserName </h5><span className="sr-only">(current)</span>
+              </NavLink>
+            </li>
+</div>
+       <div data-aos="zoom-in-up" className="tec_aoc">
+            <li className="landing_items">
+              <NavLink exact className="landing_links" to="/ByLang">
+                <img src={commis} className="link_img" alt="" /> <br />
+                <h5 className="landing_items_h5">Search By Repos Language</h5>
+              </NavLink>
+            </li>
+          </div>
+
+          <div data-aos="zoom-in-down" className="tec_aoc">
+            <li className="landing_items">
+              <NavLink exact className="landing_links" to="/Home">
+                <img src={location} className="link_img" alt="" /> <br />
+               <h5 className="landing_items_h5"> Search By Location & Language</h5>
+              </NavLink>
+            </li>
+          </div>
+
+          <div data-aos="zoom-in-left" className="tec_aoc">
+            <li className="landing_items">
+              <NavLink exact className="landing_links" to="/Commite">
+                <img src={date} className="link_img" alt="" /> <br />
+              <h5 className="landing_items_h5">  Search By Commits With Date</h5>
+              </NavLink>
+            </li>
+          </div>
+
+          <div data-aos="zoom-in-right" className="tec_aoc">
+            <li className="landing_items">
+              <NavLink exact className="landing_links" to="/Contributer">
+                <img src={cont} className="link_img" alt="" /> <br />
+               <h5 className="landing_items_h5"> Search By contributor</h5>
+              </NavLink>
+            </li>
+          </div>
+         </>
+
          
-
-              <li className="landing_items">
-                <NavLink exact className="landing_links"  to="/ByLang">
-                <img src={commis} className="link_img" alt="" />
-                  Search By Language
-                </NavLink>
-              </li>
-              <li className="landing_items">
-                <NavLink exact className="landing_links"  to="/Home">
-                <img src={location} className="link_img" alt="" />
-                  Search By Location & Language
-                </NavLink>
-              </li>
-
-              <li className="landing_items">
-                <NavLink exact className="landing_links"  to="/about">
-                <img src={date} className="link_img" alt="" />
-                  Search By Date
-                </NavLink>
-              </li>
-
-              <li className="landing_items">
-                <NavLink exact className="landing_links"  to="/about">
-                <img src={cont} className="link_img" alt="" />
-                  Search By contributor
-                </NavLink>
-              </li>
-     
-              </div>
-            </div> 
-
-     {/* Footer */}
-
-     <Footet />
-
+        
+        :
+        <>
+        <PleaseLogin />
         </>
-    )
-}
+        }
 
-export default landingPage
+   {user?<Contact />: <> </>}
+       
+    
+    <Footer />
+
+<BackTop>
+      <div style={style}><i class="fas fa-chevron-up"></i></div>
+    </BackTop>
+    </>
+  );
+};
+
+export default LandingPage;

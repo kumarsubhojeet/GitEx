@@ -11,10 +11,11 @@ import { jsPDF } from "jspdf";
 
 
 
-
 import {Modal,Button,ListGroup,ListGroupItem} from "react-bootstrap"
 
 const Repos = (props) => {
+
+
 
 
   const doc = new jsPDF('p' , 'pt');
@@ -32,6 +33,7 @@ const Repos = (props) => {
 
   return (
     <>
+   
       <div className="row">
         {repos.map((item) => (
           <div className="col-md-3">
@@ -69,8 +71,10 @@ const Repos = (props) => {
      </div>
 
         <div className="profile_img">
+
+          <a href={info.html_url} target="_blank">
               <img src={info.avatar_url} className="avatar_url" alt="Error" />
-     
+              </a>
   
 
      </div>
@@ -110,7 +114,7 @@ const Repos = (props) => {
          
 
          <div className="btnns">
-     <Button variant="danger" onClick={handleClose}>
+     <Button variant="outline-danger" onClick={handleClose}>
             Close
           </Button>
 
@@ -129,14 +133,17 @@ const Repos = (props) => {
             doc.save("a4.pdf");
           }} 
           
-          type="button" className="btn btn-warning down_btn">Generate Pdf
+          type="button" className="btn btn-outline-warning down_btn">Generate Pdf
           
           </button>
           </div>
       
          </Modal.Footer>
-    <h2>User Repository</h2>
-          <RList repos_url={info.repos_url} />
+   
+   <div className="user_Repo">
+   <h2>User Repository</h2>
+          <RList repos_url={info.repos_url} className="repos_urlR" />
+   </div>
 
           </div>
       </Modal>
@@ -149,7 +156,7 @@ const Repos = (props) => {
             </div>
           </div>
         ))}
-        <Footer />
+         
       </div>
     </>
   );

@@ -12,7 +12,7 @@ const Profile = (props) => {
   return (
       
     <>
-  
+ 
     <div className="container">
 
        <div className="main">
