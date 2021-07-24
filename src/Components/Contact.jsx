@@ -16,7 +16,8 @@ const Contact = () => {
         <Form
                 action="contact"
                 name="contact"
-                method="post"
+                method="POST"
+
                 data-netlify="true"
               >
           
@@ -28,7 +29,7 @@ const Contact = () => {
                 name="name"
                 required
                 class="form-control"
-                placeholder="First Name"
+                placeholder="Your Name"
               />
             </div>
 
@@ -47,7 +48,8 @@ const Contact = () => {
               name="email"
               required
               class="form-control"
-              placeholder="Your Email..."
+              placeholder=" enter Your Email..."
+              
             />
           </div>
           <textarea
