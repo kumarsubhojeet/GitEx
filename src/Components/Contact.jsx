@@ -32,12 +32,12 @@ const Contact = () => {
               />
             </div>
 
-            <div class="Last_name">
+            {/* <div class="Last_name">
               <input type="text" 
                name="name"
                required
               class="form-control"  placeholder="Last Name" />
-            </div>
+            </div> */}
           </div>
 
           <div class="Email">

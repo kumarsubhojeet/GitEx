@@ -36,7 +36,7 @@ const ByLang = () => {
 
     const fetchDetails = async () => {
         try{
-            const res = await axios.get(`https://api.github.com/search/users?q=language:${lang}&per_page=40`)
+            const res = await axios.get(`https://api.github.com/search/users?q=language:${lang}&per_page=40&page=${page}`)
            setrepos(res.data.items)
 
             if(!lang){
