@@ -48,7 +48,8 @@ const Contact = () => {
               name="email"
               required
               class="form-control"
-              placeholder="Your Email..."
+              placeholder=" enter Your Email..."
+              
             />
           </div>
           <textarea
