@@ -14,10 +14,13 @@ const Contact = () => {
         <form
                 action="contact"
                 name="contact"
-                method="POST"
+                method="post"
 
                 data-netlify="true"
               >
+
+<input type="hidden" name="form-name" value="contact" />
+
           
           <div className="input_item">
             <div class="First_Name">
