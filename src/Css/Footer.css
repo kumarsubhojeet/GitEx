@@ -1,0 +1,110 @@
+.footermain{
+  width: 60%;
+  margin: 0px auto;
+  height:auto;
+  background:  #aed6f1 ;
+  border-radius: 26px 26px 26px 26px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.git_logo{
+  margin: 0 auto;
+  text-align: center;
+}
+.g_l{
+  width:100px;
+  height:100px;
+  border-radius: 26px 26px 26px 26px;
+
+}
+.f_child{
+  display: flex;
+}
+.location{
+  width: 50%;
+  text-align: right;
+  border: 2px solid transparent;
+  height: 100%;
+  display: grid;
+  margin: 20px auto;
+  border-right: 4px solid  #34495e ;
+}
+.house{
+  display: flex;
+  margin: 10px auto;
+}
+.house h4{
+  margin-left: 15px;
+}
+.phone{
+  display: flex;
+  margin: 10px auto;
+}
+.phone h4{
+  margin-left: 15px;
+}
+.loc{
+  font-size:30px;
+}
+.social{
+  width: 50%;
+  margin: 50px auto;
+  text-align: justify;
+  border: 2px solid transparent;
+  height: 100%;
+  display: flex;
+  text-align: center;
+}
+.social a{
+  font-size:30px;
+  width:50%;
+}
+.social a:hover{
+  font-size:30px;
+  color:  #2471a3 ;
+}
+.copyright{
+  width: 50%;
+  margin: 11px auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align:center;
+  color: black;
+  border-radius: 19px 19px 19px 19px;
+}
+
+
+@media only screen and (max-width: 790px) {
+  .footermain{
+    width: 90%;
+    margin: 0 auto;
+    height:auto;
+  
+  }
+  .f_child{
+    display: grid;
+  }
+  .location{
+    width: 90%;
+    text-align: center;
+    border: 2px solid transparent;
+    height: 100%;
+    display: grid;
+    margin: 5px auto;
+  }
+  .social{
+    width: 90%;
+    text-align: center;
+    border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    margin: 5px auto;
+  }
+  .copyright{
+    width: 80%;
+    margin: 10px auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align:center;
+    color: black;
+    border-radius: 19px 19px 19px 19px;
+  }
+}

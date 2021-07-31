@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.landing_main{
+  width: 100%;
+  height:100vh;
+  border: 2px solid transparent;
+  margin: 5px auto;
+  display: flex;
+}
+.heading{
+  border: 2px solid transparent;
+  width: 50%;
+  text-align: center;
+  padding-top: 210px;
+}
+.picture_landing{
+  border: 2px solid transparent;
+  width: 50%;
+}
+.cell_landingpg{
+  height: 500px;
+  padding-top: 90px;
+  margin-left: 50px;
+}
+.heading2{
+  display: none;
+}
+.about{
+  width: 100%;
+  height:50vh;
+  text-align: center;
+}
+.about_para{
+  border: 1px solid transparent;
+  width:60%;
+  margin: 5px auto;
+  text-align: center;
+  padding: 0 10px;
+}
+.feature{
+  width: 100%;
+  height:auto;
+  text-align: center;
+  border: 1px solid transparent;
+}
+.landing_items{
+  text-align: center;
+  display: grid;
+  border: 1px solid transparent;
+  width:40%;
+  margin: 5px auto;
+  border-radius: 20px 20px 20px 20px;
+  transition: 1s all;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
+}
+
+
+.link_img{
+  width:350px;
+  height:350px;
+  background-size: cover;
+  
+
+}
+.tec_aoc{
+  width: 80%;
+  margin: 10px auto;
+}
+.Features{
+  width:100%;
+  margin: 0px auto;
+  text-align: center;
+}
+.landing_links{
+  text-decoration: none;
+}
+
+
+
+@media only screen and (max-width: 790px) {
+  .landing_main{
+    width: 100%;
+    height:100vh;
+    border: 2px solid transparent;
+    margin: 5px auto;
+    display: grid;
+  }
+  .heading{
+   display:none;
+  }
+  .tec_aoc{
+    width: 80%;
+    margin: 0px auto;
+  }
+  .about{
+    width: 100%;
+    height:auto;
+    text-align: center;
+  }
+  .picture_landing{
+    border: 2px solid transparent;
+    width: 100%;
+  }
+  .cell_landingpg{
+    text-align: center;
+    width: 80%;
+    padding-top: 0px;
+    margin-left: 0px;
+  }
+  .heading2{
+    display: block;
+    border: 2px solid transparent;
+    width: 100%;
+    text-align: center;
+    padding-top: 0px;
+  }
+  .about_para{
+    border: 1px solid transparent;
+    width:90%;
+    margin: 5px auto;
+    text-align: justify;
+    padding: 0 10px;
+  }
+ 
+  .landing_items{
+    width: 100%;
+    margin: 10px auto;
+    display: grid;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius:19px 19px 19px 19px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    
+  }
+  .link_img{
+    text-align: center;
+    border: 1px solid transparent;
+    width:80%;
+    height:350px;
+    margin: 5px auto;
+    background-size: cover;
+    box-shadow: none;
+
+  }
+}
