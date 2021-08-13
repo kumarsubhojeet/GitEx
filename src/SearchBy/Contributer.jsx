@@ -1,59 +1,74 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, {useState} from 'react'
+import Navbar from '../Components/Navbar';
+// import { Avatar } from 'antd';
+// import { UserOutlined } from '@ant-design/icons';
+import {toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
+import axios from "axios"
+import Footer from "../Components/Footer"
+import ContributorDetails from './ContributerDetails';
+import { BackTop } from 'antd';
 
-// import Footer from '../../../../layout/Footer/Footer'
 
-import Axios from "axios";
 
-import {
-  Row,
-  Container,
-  Col,
-  Input,
-  Button,
-  InputGroup,
-  InputGroupAddon,
-  Card,
-  CardBody,
-} from "reactstrap";
-
-import { toast } from "react-toastify";
-import { Link, Redirect } from "react-router-dom";
-
+toast.configure()
 
 const Contributor = () => {
-  
+
+    const style = {
+        height: 40,
+        width: 40,
+        lineHeight: '40px',
+        borderRadius: 40,
+        backgroundColor: ' #2e4053 ',
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 14,
+        duration: 1300
+      };
+     
+
+   
+   
 
   const [query1, setQuery1] = useState("");
   const [query2, setQuery2] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
   const [date, setDate] = useState(null);
   const [toDate, setToDate] = useState(null);
+  const [page, setPage] = useState("");
 
-  const fetchDetails = async () => {
-    const url = `https://api.github.com/repos/${query1}/${query2}/stats/contributors?since=${date} to=${toDate}`;
+    const fetchDetails = async () => {
+      const url = `https://api.github.com/repos/${query1}/${query2}/contributors?since=${date} to=${toDate}&per_page=40&page=${page}`;
+  
+      try {
+        const { data } = await axios.get(url);
+        setUser(data);
+       
+      } catch (error) {
+        toast("Not able to locate User", { type: "error" });
+      }
+    };
+  
 
-    try {
-      const { data } = await Axios.get(url);
-      setUser(data);
-      console.log({ data });
-    } catch (error) {
-      toast("Not able to locate user", { type: "error" });
-    }
-  };
+    return (
+        <>
+        
+        <div className="home_jax">
+            
 
-
-  return (
-    <>
-    
-    <div className="container" >
+            <div className="container" >
           
-          <div className="userRepo_inputBar_Home">
-              <input
+            <div className="userRepo_inputBar_Home">
+
+            
+
+            <input
                 type="text"
                 value={query1}
                 className="form-control"
                 onChange={(e) => setQuery1(e.target.value)}
-                placeholder="Please Provide the username"
+                placeholder="Organization Name..."
                 // className="text-white"
               />
               <input
@@ -61,7 +76,7 @@ const Contributor = () => {
                 value={query2}
                 className="form-control"
                 onChange={(e) => setQuery2(e.target.value)}
-                placeholder="Please Provide the repositories name"
+                placeholder="Repositories Name..."
                 
               />
 
@@ -84,70 +99,39 @@ const Contributor = () => {
                 
               />
 
+<input type="number"
+                min="1"
+                value={page}
+                className="form-control w-50"
+                onChange={(e) => setPage(e.target.value)}
+                placeholder="Enter the page no." />
+
              
                 <button onClick={fetchDetails} className="btn btn-outline-primary bttn">
                   Fetch User
                 </button>
-                </div></div>      
+                </div>     
+
+
+
+
+
+       
+
+<ContributorDetails repos={user} />
+
+<h1>{user.login}</h1>
+
+<BackTop>
+      <div style={style}><i class="fas fa-chevron-up"></i></div>
+    </BackTop>
+
+    </div>
+    </div>         
+
            
-                <div className="container" >    
-          <div>
-            <div style={{ display: "flex" }}>
-              {user ? (
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: 'center' }}>
-                  {user.map((element, index) => {
-                    return (
-                      <div className="text-center mt-3 mb-4">
-                        <li
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            margin: "20px",
-                          }}
-                          key={index}
-                        >
-                          <a
-                            style={{ marginTop: "10px" }}
-                            target="_blank"
-                            href={element.author.html_url}
-                            style={{textDecoration: 'none'}}
-                          >
-                            <img
-                              width="200"
-                              height="200"
-                              className="img-thumbnail"
-                              src={element.author.avatar_url}
-                            ></img>
-                            <CardBody>
-                              <div className="auth-card-header">
-                                {element.author.login}
-                              </div>
-                            
-                              
-                              
-                              <div className="auth-label">
-                                {element.author.type}
-                              </div>
-                            </CardBody>
-                          </a>
-                        </li>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <p
-                style={{ marginTop: "100px" , paddingLeft: "100px"}}
-                className="text-white text-center pt-20"
-              >
-                {/* <img src={cell} height= "400vh"></img> */}
-              </p>
-              )}
-            </div>
-          </div> </div>
-      
-    </>
-  );
-};
+        </>
+    )
+}
 
 export default Contributor;

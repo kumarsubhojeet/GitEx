@@ -31,6 +31,7 @@ const UserRepos = () => {
 
     const [username,setname] = useState();
     const [details,setdetails] = useState({})
+    const token = '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'
 
     const getdata =async()=>{
        try {

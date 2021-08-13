@@ -6,6 +6,8 @@ import { BackTop } from 'antd';
 
 export const RList = ({ repos_url }) => {
 
+    console.log(repos_url);
+
     const style = {
         height: 40,
         width: 40,
@@ -21,20 +23,26 @@ export const RList = ({ repos_url }) => {
  
 
     const [repos, setRepos] = useState([])
+    const [deonload,setdeon] = useState([])
 
     const fetchRepos = async() => {
        try {
         const {data} = await axios.get(repos_url)
         setRepos(data)
-        console.log(data);
+      
+       
        } 
        catch (error) {
            console.log(error);
        }
     }
 
+   
+    const token = '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'
+
     useEffect(() => {
         fetchRepos()
+       
     },[repos_url])
 
 
@@ -59,6 +67,21 @@ export const RList = ({ repos_url }) => {
                     <h5 className="text_info">create date: {repo.created_at}</h5>
                     <h5 className="text_info">update date: {repo.updated_at}</h5>
                     <h5 className="text_info">pushed date: {repo.updated_at}</h5>
+                    {/* <button type="button" class="btn btn-secondary" onClick={async function(){
+                        try {
+                          
+                                const rd = await axios.get(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/zipball/master , {
+                                    headers={'Authorization': "token " + ${token}}
+                                }`)
+                                console.log(rd);
+                          
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }}>
+                    
+                    <i class="far fa-file-archive"></i></button> */}
+                    
                         </ListGroupItem>
                     ))
                 }

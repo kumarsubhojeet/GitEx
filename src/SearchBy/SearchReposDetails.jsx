@@ -30,7 +30,7 @@ const Repos = (props) => {
 
   const [info,setinfo] = useState([]);
   const [userrepos, setrepos] = useState([]);
-
+  const token = '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'
   return (
     <>
    
@@ -46,7 +46,7 @@ const Repos = (props) => {
                 alt="Img-Error"
                 onClick={async function(){
                     try {
-                        const res = await fetch(`https://api.github.com/users/${item.owner.login}`)
+                        const res = await fetch(`https://api.github.com/users/${item.owner.login}?access_token=${token}`)
                         const data = await res.json();
                         setinfo(data)
                         
@@ -133,8 +133,8 @@ const Repos = (props) => {
             doc.save("GitExtractor.pdf");
           }} 
           
-          type="download" className="btn btn-outline-warning down_btn">Generate Pdf
-          
+          type="button" className="btn btn-outline-warning down_btn">Generate Pdf          
+         
           </button>
           </div>
       

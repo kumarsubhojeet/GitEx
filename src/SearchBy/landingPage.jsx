@@ -110,23 +110,23 @@ const LandingPage = () => {
             </li>
           </div>
           
-       <div data-aos="zoom-in-up" className="tec_aoc">
+       {/* <div data-aos="zoom-in-up" className="tec_aoc">
             <li className="landing_items">
               <NavLink exact className="landing_links" to="/ByLang">
                 <img src={ByLang} className="link_img" alt="" /> <br />
                 <h5 className="landing_items_h5">Search By language</h5>
               </NavLink>
             </li>
-          </div>
+          </div> */}
 
-          <div data-aos="zoom-in-up" className="tec_aoc">
+          {/* <div data-aos="zoom-in-up" className="tec_aoc">
             <li className="landing_items">
               <NavLink exact className="landing_links" to="/UserByRepos">
                 <img src={commis} className="link_img" alt="" /> <br />
                 <h5 className="landing_items_h5">Search User Repositories</h5>
               </NavLink>
             </li>
-          </div>
+          </div> */}
 
           {/* <div data-aos="zoom-in-left" className="tec_aoc">
             <li className="landing_items">

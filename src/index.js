@@ -11,6 +11,7 @@ import "./bootstrap.min.css"
 import "./Css/Contact.css"
 import './Css/Home.css'
 import "./Css/userByRepos.css"
+import "./Css/Contributer.css"
 
 import { BrowserRouter } from "react-router-dom";
 

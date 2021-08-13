@@ -31,6 +31,7 @@ const Repos = (props) => {
 
   const [info,setinfo] = useState([]);
   const [userrepos, setrepos] = useState([]);
+  const token = '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'
 
   return (
     <>
@@ -47,7 +48,7 @@ const Repos = (props) => {
                 alt="Img-Error"
                 onClick={async function(){
                     try {
-                        const res = await fetch(`https://api.github.com/users/${item.login}`)
+                        const res = await fetch(`https://api.github.com/users/${item.login}?access_token=${token}`)
                         const data = await res.json();
                         setinfo(data)
                         
