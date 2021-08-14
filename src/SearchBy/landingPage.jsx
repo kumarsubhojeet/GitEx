@@ -96,7 +96,7 @@ const LandingPage = () => {
               <NavLink exact className="landing_links" to="/userRepos">
                 <img src={ByName} className="link_img" alt="" />
                 <br />
-               <h5 className="landing_items_h5"> Serach By UserName </h5><span className="sr-only">(current)</span>
+               <h5 className="landing_items_h5"> Search By UserName </h5><span className="sr-only">(current)</span>
               </NavLink>
             </li>
 </div>

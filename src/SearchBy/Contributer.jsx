@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState , useRef} from 'react'
 import Navbar from '../Components/Navbar';
 // import { Avatar } from 'antd';
 // import { UserOutlined } from '@ant-design/icons';
@@ -14,6 +14,8 @@ import { BackTop } from 'antd';
 toast.configure()
 
 const Contributor = () => {
+
+  const inputRef = useRef(null)
 
     const style = {
         height: 40,
@@ -33,23 +35,35 @@ const Contributor = () => {
 
   const [query1, setQuery1] = useState("");
   const [query2, setQuery2] = useState("");
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState([{}]);
   const [date, setDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [page, setPage] = useState("");
+  const count = 0
+  const [len,setleng] = useState()
+  const [total_contributory , settotal_contributory] = useState(count)
+  
+  const [unique,setunique] = useState(0)
+
 
     const fetchDetails = async () => {
-      const url = `https://api.github.com/repos/${query1}/${query2}/contributors?since=${date} to=${toDate}&per_page=40&page=${page}`;
+      const url = `https://api.github.com/repos/${query1}/${query2}/contributors?page=${page}`;
   
       try {
+        inputRef.current.style.visibility="visible";
         const { data } = await axios.get(url);
         setUser(data);
+
+        setleng(data.length);
+
+        console.log(data);
        
       } catch (error) {
         toast("Not able to locate User", { type: "error" });
       }
     };
   
+    
 
     return (
         <>
@@ -81,7 +95,7 @@ const Contributor = () => {
               />
 
              
-              <input
+              {/* <input
                 type="date"
                 value={date}
                 className="form-control"
@@ -97,7 +111,7 @@ const Contributor = () => {
                 onChange={(e) => setToDate(e.target.value)}
                 placeholder="Please select the date"
                 
-              />
+              /> */}
 
 <input type="number"
                 min="1"
@@ -115,12 +129,10 @@ const Contributor = () => {
 
 
 
+<div className="cont" ref={inputRef} style={{visibility: 'hidden'}}>
+        <ContributorDetails repos={user} />
+        </div>
 
-       
-
-<ContributorDetails repos={user} />
-
-<h1>{user.login}</h1>
 
 <BackTop>
       <div style={style}><i class="fas fa-chevron-up"></i></div>

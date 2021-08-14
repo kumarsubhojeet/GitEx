@@ -28,14 +28,17 @@ const UserByCommits = () => {
   const [user, setUser] = useState(null);
   const [date, setDate] = useState("");
   const [toDate, setToDate] = useState("");
+  const [page, setPage] = useState("");
+
+  const[cont , setcont] = useState([]);
 
   const fetchDetails = async () => {
-    const url = `https://api.github.com/repos/${query1}/${query2}/commits?since=${date} to=${toDate}`;
+    const url = `https://api.github.com/repos/${query1}/${query2}/commits?since=${date}&until=${toDate}&per_page=100&page=${page}`;
 
     try {
       const { data } = await Axios.get(url);
       setUser(data);
-      console.log({ data });
+      
     } catch (error) {
       toast("Not able to locate user", { type: "error" });
     }
@@ -82,6 +85,13 @@ const UserByCommits = () => {
                 // className="text-white"
               />
 
+<input type="number"
+                min="1"
+                value={page}
+                className="form-control w-50"
+                onChange={(e) => setPage(e.target.value)}
+                placeholder="Enter the page no." />
+
              
              
                 <button onClick={fetchDetails} className="btn btn-outline-primary bttn">
@@ -92,11 +102,19 @@ const UserByCommits = () => {
            
            
      
-          <div>
+          <div className="container">
             <div style={{ display: "flex" }}>
               {user ? (
                 <div style={{ display: "flex", flexWrap: "wrap", justifyContent: 'center' }}>
                   {user.map((element, index) => {
+                    const company_info = element.commit.author.email
+                    const comp_data = company_info.split("@")
+                    
+                    const  company_name = comp_data[1].split('.', 1)  
+                    
+                    const  company = company_name[0].toUpperCase();
+                    
+                    
                     return (
                       <div className="text-center mt-3 mb-4">
                         <li
@@ -119,23 +137,34 @@ const UserByCommits = () => {
                               className="img-thumbnail"
                               src={element.author.avatar_url}
                             ></img>
+                            
                             <CardBody>
                               <div className="auth-card-header">
                                 {element.author.login}
                               </div>
                               <div className="auth-label">
                                 {element.commit.committer.date}
+
                               </div>
+                    
+
                               <div className="auth-label">
-                                {element.commit.committer.email}
+                             {company === "Users.noreply.github" || company === "GMAIL" || company==='YAHOO' ?
+                            <h2>Total</h2> : <h2>Unique</h2> 
+                            }
                               </div>
+
+                              <div className="auth-label">
+                                {company_name}
+                              </div>
+
                               <div className="auth-label">
                                 {element.commit.committer.name}
                               </div>
-                              <div className="auth-label">
-                                {element.commit.message}
-                              </div>
+                            
                             </CardBody>
+                        
+                        
                           </a>
                         </li>
                       </div>

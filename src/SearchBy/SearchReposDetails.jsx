@@ -121,7 +121,7 @@ const Repos = (props) => {
           <button onClick={function(){
            doc.addImage(info.avatar_url,380, 40, 180, 260)
            doc.text(info.login,20,20);
-           doc.text(info.location,20,40);
+          //  doc.text(info.location,20,40);
            doc.text("---------------------------", 20,60)
            doc.text("Visite Urls -->" ,20,100)
            doc.text(info.url ,20,120);
