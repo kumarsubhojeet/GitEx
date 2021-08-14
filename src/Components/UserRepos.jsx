@@ -30,13 +30,13 @@ const UserRepos = () => {
 
 
     const [username,setname] = useState();
-    const [details,setdetails] = useState({})
+    const [details,setdetails] = useState([])
     const token = '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'
 
     const getdata =async()=>{
        try {
         inputRef.current.style.visibility="visible";
-        const { data } = await axios.get(`https://api.github.com/users/${username}`);
+        const { data } = await axios.get(`https://api.github.com/users/${username}?access_token=${token}`);
         setdetails(data);
         
        } catch (error) {

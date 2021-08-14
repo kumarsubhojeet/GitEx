@@ -11,7 +11,6 @@ import { jsPDF } from "jspdf";
 
 
 
-
 import {Modal,Button,ListGroup,ListGroupItem} from "react-bootstrap"
 
 const Repos = (props) => {
@@ -132,7 +131,7 @@ const Repos = (props) => {
            doc.text("---------------------------", 20,180)
            
            
-            doc.save("GitExtractor.pdf");
+            doc.save("a4.pdf");
           }} 
           
           type="button" className="btn btn-outline-warning down_btn">Generate Pdf
