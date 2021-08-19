@@ -10,6 +10,7 @@ import 'antd/dist/antd.css';
 import "./bootstrap.min.css"
 import "./Css/Contact.css"
 import './Css/Home.css'
+import './Css/Commit.css'
 
 import { BrowserRouter } from "react-router-dom";
 

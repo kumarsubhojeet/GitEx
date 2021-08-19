@@ -93,7 +93,7 @@ const LandingPage = () => {
               <NavLink exact className="landing_links" to="/userRepos">
                 <img src={userr} className="link_img" alt="" />
                 <br />
-               <h5 className="landing_items_h5"> Serach By UserName </h5><span className="sr-only">(current)</span>
+               <h5 className="landing_items_h5"> Search By UserName </h5><span className="sr-only">(current)</span>
               </NavLink>
             </li>
 </div>
@@ -101,7 +101,7 @@ const LandingPage = () => {
             <li className="landing_items">
               <NavLink exact className="landing_links" to="/ByLang">
                 <img src={commis} className="link_img" alt="" /> <br />
-                <h5 className="landing_items_h5">Search By Repos Language</h5>
+                <h5 className="landing_items_h5">Search Repository</h5>
               </NavLink>
             </li>
           </div>
@@ -115,14 +115,14 @@ const LandingPage = () => {
             </li>
           </div>
 
-          <div data-aos="zoom-in-left" className="tec_aoc">
+          {/* <div data-aos="zoom-in-left" className="tec_aoc">
             <li className="landing_items">
               <NavLink exact className="landing_links" to="/Commite">
                 <img src={date} className="link_img" alt="" /> <br />
               <h5 className="landing_items_h5">  Search By Commits With Date</h5>
               </NavLink>
             </li>
-          </div>
+          </div> */}
 
           <div data-aos="zoom-in-right" className="tec_aoc">
             <li className="landing_items">

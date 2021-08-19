@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState , useRef} from 'react'
 import Navbar from '../Components/Navbar';
 // import { Avatar } from 'antd';
 // import { UserOutlined } from '@ant-design/icons';
@@ -6,25 +6,16 @@ import {toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import axios from "axios"
 import Footer from "../Components/Footer"
-import Repos from '../Components/Repos';
+import ContributorDetails from '../SearchBy/ContributorDetails';
 import { BackTop } from 'antd';
-import {
-      Row,
-      Container,
-      Col,
-      Input,
-      Button,
-      InputGroup,
-      InputGroupAddon,
-      Card,
-      CardBody,
-    } from "reactstrap";
 
 
 
 toast.configure()
 
-const Contributer = () => {
+const Contributor = () => {
+
+  const inputRef = useRef(null)
 
     const style = {
         height: 40,
@@ -40,33 +31,39 @@ const Contributer = () => {
      
 
    
-    const [lang,setlang] = useState("");
-    const [location,setlocation] = useState("");
-    const [repos, setrepos] = useState([]);
-    const [count,setcount] = useState(0)
-    const [date, setDate] = useState(null);
-    const [toDate, setToDate] = useState(null);
-    const [query1, setQuery1] = useState("");
-    const [query2, setQuery2] = useState("");
-  
+   
 
+  const [query1, setQuery1] = useState("");
+  const [query2, setQuery2] = useState("");
+  const [user, setUser] = useState([{}]);
+  const [date, setDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
+  const [page, setPage] = useState("");
+  const count = 0
+  const [len,setleng] = useState()
+  const [total_contributory , settotal_contributory] = useState(count)
   
+  const [unique,setunique] = useState(0)
+
 
     const fetchDetails = async () => {
-        try{
-            const res = `https://api.github.com/repos/${query1}/${query2}/stats/contributors?since=${date} to=${toDate}`;
-             setrepos(res.data)
-
-            // if(!query1 || !query2){
-            //     toast.error('No data Entered ❌' ,{position:toast.POSITION.TOP_CENTER})
-            // }
-        } catch  (error) {
-            toast.error('Wrong Enter ❌' ,{position:toast.POSITION.TOP_CENTER})
-            console.log(error);
-        }
-    }
+      const url = `https://api.github.com/repos/${query1}/${query2}/contributors?page=${page}`;
   
+      try {
+        inputRef.current.style.visibility="visible";
+        const { data } = await axios.get(url);
+        setUser(data);
 
+        setleng(data.length);
+
+        console.log(data);
+       
+      } catch (error) {
+        toast("Not able to locate User", { type: "error" });
+      }
+    };
+  
+    
 
     return (
         <>
@@ -78,61 +75,59 @@ const Contributer = () => {
           
             <div className="userRepo_inputBar_Home">
 
-            <Input
+            
+
+            <input
                 type="text"
                 value={query1}
-                required
+                className="form-control"
                 onChange={(e) => setQuery1(e.target.value)}
-                placeholder="Please Provide the username"
+                placeholder="Organization Name..."
                 // className="text-white"
               />
-              <Input
+              <input
                 type="text"
                 value={query2}
-                required
+                className="form-control"
                 onChange={(e) => setQuery2(e.target.value)}
-                placeholder="Please Provide the repositories name"
-                // className="text-white"
+                placeholder="Repositories Name..."
+                
               />
 
-            <Input
-                type="date"
-                value={date}
-                required
-                onChange={(e) => setDate(e.target.value)}
-                placeholder="Please select the date"
-                // className="text-white"
-              />
+             
+             
 
-              <Input
-                type="date"
-                value={toDate}
-                onChange={(e) => setToDate(e.target.value)}
-                placeholder="Please select the date"
-                // className="text-white"
-              />
+<input type="number"
+                min="1"
+                value={page}
+                className="form-control w-50"
+                onChange={(e) => setPage(e.target.value)}
+                placeholder="Enter the page no." />
 
-    <button className="btn btn-outline-primary userRepo_btn_home" type="button" onClick={fetchDetails}>Search</button>
-  
-
-</div>
+             
+                <button onClick={fetchDetails} className="btn btn-outline-primary bttn">
+                  Fetch User
+                </button>
+                </div>     
 
 
 
 
-          <BackTop>
+<div className="cont" ref={inputRef} style={{visibility: 'hidden'}}>
+        <ContributorDetails repos={user} />
+        </div>
+
+
+<BackTop>
       <div style={style}><i class="fas fa-chevron-up"></i></div>
     </BackTop>
-          <Repos repos={repos} />
 
-
-            </div>
-            
-            </div>
+    </div>
+    </div>         
 
            
         </>
     )
 }
 
-export default Contributer
+export default Contributor;

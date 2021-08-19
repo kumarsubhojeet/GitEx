@@ -8,6 +8,7 @@ import axios from "axios"
 import Footer from "../Components/Footer"
 import Repos from '../Components/Repos';
 import { BackTop } from 'antd';
+import SearchReposDetails from '../SearchBy/SearchReposDetails'
 
 
 
@@ -36,12 +37,11 @@ const ByLang = () => {
 
     const fetchDetails = async () => {
         try{
-            const res = await axios.get(`https://api.github.com/search/users?q=language:${lang}&per_page=40&page=${page}`)
-           setrepos(res.data.items)
-
-            if(!lang){
-                toast.error('Please Enter Properly ❌' ,{position:toast.POSITION.TOP_CENTER})
-            }
+            const { data } = await axios.get(
+                  `https://api.github.com/search/repositories?q=${lang}&per_page=40&page=${page}`
+                );     
+                setrepos(data.items);
+           
         } catch  (error) {
             toast.error('Wrong Enter ❌' ,{position:toast.POSITION.TOP_CENTER})
             console.log(error);
@@ -62,7 +62,7 @@ const ByLang = () => {
             
 
   <input type="text" className="form-control"
-   placeholder="Enter Language" value={lang} onChange={(e)=>setlang(e.target.value)}  />
+   placeholder="Enter Repostory Name" value={lang} onChange={(e)=>setlang(e.target.value)}  />
 
 <input type="number"
                 min="1"
@@ -80,7 +80,7 @@ const ByLang = () => {
 
        
 
-<Repos repos={repos} />
+<SearchReposDetails repos={repos} />
 
 <BackTop>
       <div style={style}><i class="fas fa-chevron-up"></i></div>

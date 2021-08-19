@@ -1,7 +1,4 @@
 import React from "react";
-import {
-  Form
-} from "reactstrap";
 
 const Contact = () => {
   return (
@@ -13,14 +10,14 @@ const Contact = () => {
         </div>
        
         <div className="inputs_item">
-        <Form
-                action="contact"
+        <form
+                action="/Contact"
                 name="contact"
                 method="POST"
-
                 data-netlify="true"
               >
-          
+          <input type="hidden" name="form-name" value="contact" />
+
           <div className="input_item">
             <div class="First_Name">
               <input
@@ -29,7 +26,7 @@ const Contact = () => {
                 name="name"
                 required
                 class="form-control"
-                placeholder="Your Name"
+                placeholder="First Name"
               />
             </div>
 
@@ -48,8 +45,7 @@ const Contact = () => {
               name="email"
               required
               class="form-control"
-              placeholder=" enter Your Email..."
-              
+              placeholder="Your Email..."
             />
           </div>
           <textarea
@@ -63,7 +59,7 @@ const Contact = () => {
           <button  type="submit" class="btn btn-success">
             SEND
           </button>
-          </Form>
+          </form>
         </div>
      
       </div>

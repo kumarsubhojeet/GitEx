@@ -31,11 +31,17 @@ const UserRepos = () => {
 
     const [username,setname] = useState();
     const [details,setdetails] = useState({})
+    const headers = {
+      "Authorization" : `Token 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`
+    }
+  
 
     const getdata =async()=>{
        try {
         inputRef.current.style.visibility="visible";
-        const { data } = await axios.get(`https://api.github.com/users/${username}`);
+        const { data } = await axios.get(`https://api.github.com/users/${username}`,{
+          "headers" : headers
+        });
         setdetails(data);
         
        } catch (error) {

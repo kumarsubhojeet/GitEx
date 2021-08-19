@@ -86,7 +86,7 @@ const ForgotPassword = () => {
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
                                         required
-                                        className="text-white"
+                                        className="text-black"
 
                                     />
                                 </Col>

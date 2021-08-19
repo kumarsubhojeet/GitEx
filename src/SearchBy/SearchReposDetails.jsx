@@ -6,7 +6,7 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import RList from "./RList";
+import RList from "../Components/RList";
 import { jsPDF } from "jspdf";
 
 
@@ -30,27 +30,26 @@ const Repos = (props) => {
 
   const [info,setinfo] = useState([]);
   const [userrepos, setrepos] = useState([]);
-
   const headers = {
-    "Authorization" : `Token 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`
-  }
-
+      "Authorization" : `Token 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`
+    }
   return (
     <>
- <div className="row">
+   
+      <div className="row">
         {repos.map((item) => (
           <div className="col-md-3">
             <div className="card my-2 profile_card">
 
             <Link  onClick={handleShow}>
             <img
-                src={item.avatar_url}
+                src={item.owner.avatar_url}
                 className="img-fluid w-50 rounded-circle profile_photo"
                 alt="Img-Error"
                 onClick={async function(){
                     try {
-                        const res = await fetch(`https://api.github.com/users/${item.login}`,{
-                          "headers" : headers
+                        const res = await fetch(`https://api.github.com/users/${item.owner.login}`,{
+                              "headers" : headers
                         })
                         const data = await res.json();
                         setinfo(data)
@@ -63,7 +62,7 @@ const Repos = (props) => {
              
       </Link>
       <br />
-               <h4 className="user_name_profile" >{item.login}</h4>
+               <h4 className="user_name_profile" >{item.owner.login}</h4>
      
 
 
@@ -126,7 +125,7 @@ const Repos = (props) => {
           <button onClick={function(){
            doc.addImage(info.avatar_url,380, 40, 180, 260)
            doc.text(info.login,20,20);
-           doc.text(info.location,20,40);
+          //  doc.text(info.location,20,40);
            doc.text("---------------------------", 20,60)
            doc.text("Visite Urls -->" ,20,100)
            doc.text(info.url ,20,120);
@@ -135,11 +134,11 @@ const Repos = (props) => {
            doc.text("---------------------------", 20,180)
            
            
-            doc.save("a4.pdf");
+            doc.save("GitExtractor.pdf");
           }} 
           
-          type="button" className="btn btn-outline-warning down_btn">Generate Pdf
-          
+          type="button" className="btn btn-outline-warning down_btn">Generate Pdf          
+         
           </button>
           </div>
       

@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState,useEffect, createContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
@@ -6,16 +6,17 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import RList from "./RList";
+import RList from "../Components/RList";
 import { jsPDF } from "jspdf";
+import axios from "axios"
 
 
 
 import {Modal,Button,ListGroup,ListGroupItem} from "react-bootstrap"
 
-const Repos = (props) => {
 
 
+const ContributorDetails = (props) => {
 
 
   const doc = new jsPDF('p' , 'pt');
@@ -30,14 +31,14 @@ const Repos = (props) => {
 
   const [info,setinfo] = useState([]);
   const [userrepos, setrepos] = useState([]);
-
+  const [cdata,setcdata] = useState([]);
   const headers = {
-    "Authorization" : `Token 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`
-  }
-
+      "Authorization" : `Token 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`
+    }
   return (
     <>
- <div className="row">
+   
+      <div className="row">
         {repos.map((item) => (
           <div className="col-md-3">
             <div className="card my-2 profile_card">
@@ -50,7 +51,7 @@ const Repos = (props) => {
                 onClick={async function(){
                     try {
                         const res = await fetch(`https://api.github.com/users/${item.login}`,{
-                          "headers" : headers
+                              "headers" : headers
                         })
                         const data = await res.json();
                         setinfo(data)
@@ -64,7 +65,8 @@ const Repos = (props) => {
       </Link>
       <br />
                <h4 className="user_name_profile" >{item.login}</h4>
-     
+               <h4 className="user_name_profile" >Contributions: {item.contributions}</h4>
+         
 
 
 
@@ -100,6 +102,7 @@ const Repos = (props) => {
          <div className="location_child">
              <h5>Public Repository: {info.public_repos}</h5>
              <h5>public Gists: {info.public_gists}</h5>
+             <h5>Org: {info.company}</h5>
          </div>
 
      </div>
@@ -126,7 +129,7 @@ const Repos = (props) => {
           <button onClick={function(){
            doc.addImage(info.avatar_url,380, 40, 180, 260)
            doc.text(info.login,20,20);
-           doc.text(info.location,20,40);
+      //      doc.text(info.location,20,40);
            doc.text("---------------------------", 20,60)
            doc.text("Visite Urls -->" ,20,100)
            doc.text(info.url ,20,120);
@@ -135,7 +138,7 @@ const Repos = (props) => {
            doc.text("---------------------------", 20,180)
            
            
-            doc.save("a4.pdf");
+            doc.save("GitExtractor.pdf");
           }} 
           
           type="button" className="btn btn-outline-warning down_btn">Generate Pdf
@@ -167,4 +170,4 @@ const Repos = (props) => {
   );
 };
 
-export default Repos;
+export default ContributorDetails;

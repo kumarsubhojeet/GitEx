@@ -30,7 +30,7 @@ const SignUp = () => {
     
 
   return (
-    <div className="login_main">
+    <div className="Sign_main">
       <div className="login_child">
 
       {error && <Alert variant="warning">{error}</Alert>}
@@ -81,13 +81,13 @@ const SignUp = () => {
            
          </div>
         
-         <button type="submit" class="btn btn-outline-success">
+         <button type="submit" class="btn btn-outline-warning">
             Submit
           </button>
 
           <br />
 <br />
-          <Link to="/Login" style={{color:"white",textDecoration: "none"}}>Already have an Account !</Link>
+          <Link to="/Login" style={{color:"black" ,fontSize:"19px",textDecoration: "none"}}>Already have an Account !</Link>
         </form>
       </div>
     </div>

@@ -69,10 +69,10 @@ const Login = () => {
           </button>
 <br />
 <br />
-          <Link to="/Signup" style={{color:"white" , textDecoration: "none"}}>Free SignUp</Link>
+          <Link to="/Signup" style={{color:"Black" , textDecoration: "none" , fontSize:'19px'}}>Free SignUp</Link>
        <br />
        <br />
-          <Link to="/ForgotPAssword" style={{color:"white" , textDecoration: "none"}}>Reset Password <span><i class="fas fa-key keyy"></i></span> </Link>
+          <Link to="/ForgotPAssword" style={{color:"Black" , textDecoration: "none" , fontSize:'19px'}}>Reset Password <span><i class="fas fa-key keyy"></i></span> </Link>
         </form>
       </div>
     </div>

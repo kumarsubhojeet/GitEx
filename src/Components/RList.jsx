@@ -19,12 +19,17 @@ export const RList = ({ repos_url }) => {
       };
      
  
-
+      const headers = {
+        "Authorization" : `Token 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`
+      }
+    
     const [repos, setRepos] = useState([])
 
     const fetchRepos = async() => {
        try {
-        const {data} = await axios.get(repos_url)
+        const {data} = await axios.get(repos_url,{
+            "headers" : headers
+        })
         setRepos(data)
         console.log(data);
        } 
