@@ -32,7 +32,7 @@ const Repos = (props) => {
   const [userrepos, setrepos] = useState([]);
 
   const headers = {
-    "Authorization" : `Token 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`
+    "Authorization" : `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`
   }
 
   return (

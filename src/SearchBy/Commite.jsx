@@ -30,11 +30,19 @@ const UserByCommits = () => {
   const [toDate, setToDate] = useState("");
   const [page, setPage] = useState("");
 
-  const[cont , setcont] = useState([]);
+  const [tc_cont , settc] = useState({});
+  const [uc_cont , setuc] = useState({});
 
-  const arrtc =[];
-  const arruc =[];
-  const nametocomp=[];
+
+  const arrtc = {};
+  const arruc = {};
+  const nametocomp= {};
+  var tc_key ={};
+  var uc_key = {};
+  let flag = true;
+  
+
+
 
   const fetchDetails = async () => {
     const url = `https://api.github.com/repos/hashicorp/consul/commits?since=${date}&until=${toDate}&per_page=100&page=${page}`;
@@ -42,6 +50,8 @@ const UserByCommits = () => {
     try {
       const { data } = await Axios.get(url);
       setUser(data);
+
+      console.log('Total Counts: '+data.length);
       
     } catch (error) {
       toast("Not able to locate user", { type: "error" });
@@ -120,18 +130,35 @@ const UserByCommits = () => {
                     const  company = company_name[0].toUpperCase();
                     
                    
-                    arrtc[company] === undefined  ? arrtc[company] =1:arrtc[company]++;
-                    console.log(arrtc)
+                    arrtc[company] === undefined
+                    ? (arrtc[company] = 1)
+                    : arrtc[company]++;
+                  //console.log(arrtc)
 
-                    const name = element.author.login;
-                    //console.log(name)
+                  const name = element.author.login;  
+
+                  nametocomp[name] === undefined
+                  ? (nametocomp[name] = 1)
+                  : nametocomp[name]++;
+
+                  // eslint-disable-next-line no-unused-expressions
+                  arruc[company] === undefined
+                  ? (arruc[company] = 1)
+                  : nametocomp[name] === 1
+                  ? arruc[company]++
+                  : null;
+
+                  if (flag) {
+                    console.log('Total Contributor');
+                    console.log(arrtc);
+                    console.log('Unique Contributor');
+                    console.log(arruc);
+                    flag = false;
+                  }
+
                     
-                    nametocomp[name] === undefined ? nametocomp[name]=1:nametocomp[name]++;
-
-                    arruc[company]===undefined ? arruc[company]=1 : nametocomp[name]==1?arruc[company]++:
                     
-
-                    console.log(arruc)
+                  
                     
                     return (
                       <div className="text-center mt-3 mb-4">
@@ -146,21 +173,20 @@ const UserByCommits = () => {
                          
                         
                             
-                            <CardBody>
-                            <div className="main">
+                            {/* <CardBody>
+                            <div className="Contri_main">
                               <div className="tc_cont">
-                                {
-                                  arrtc.map(tc=>(
-                                    <>
-                                    <h1>Total</h1>
-                                    <h1>{tc}</h1>
-                                    </>
-                                  ))
-                                }
+                                <h1>Total Contributor</h1>
+                               <h5>{tc_key}</h5>
                               </div>
+
+                              <div className="uc_cont">
+                              <h1>Unique Contributor</h1>
+                              <h5>{uc_key}</h5>
+                               </div>
                             </div>
                             
-                            </CardBody>
+                            </CardBody> */}
                         
                         
                         

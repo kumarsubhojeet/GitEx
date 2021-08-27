@@ -20,7 +20,7 @@ export const RList = ({ repos_url }) => {
      
  
       const headers = {
-        "Authorization" : `Token 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`
+        "Authorization" : `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`
       }
     
     const [repos, setRepos] = useState([])
